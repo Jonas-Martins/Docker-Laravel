@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  laravel-app:
+    build: . #pega os arquivos criado no Dockerfile
+    ports:
+      - "8080:80" # na minha porta 8080 referencia a porta 80 do nginx do docker
+    networks:
+      - app-network
+    volumes:
+      - ./:/usr/share/nginx # criando um volume do meu computador para a pasta do nginx do docker
+  
+  mysql-app:
+    image: mysql:5.7.22
+    ports:
+      - "3307:3306"
+    volumes:
+      - .docker/dbdata:/var/lib/mysql # criando uma pasta oculta .docker/dbdata(poderia ser qualquer nome) e salvando os arquivos do docker nela, sendo assim o nosso banco de dados não sera perdido
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: laravel
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
