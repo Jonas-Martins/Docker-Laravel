@@ -3,11 +3,11 @@
 
 ## Instalar
 
-git clone
-composer install
-docker-compose up -d
+git clone </br>
+composer install  </br>
+docker-compose up -d 
 
 ## Caso de erro de acesso no Storage
 
-docker exec -it api_laravel-app_1 bash
+docker exec -it api_laravel-app_1 bash </br>
 chown nginx -R /usr/share/nginx/storage
