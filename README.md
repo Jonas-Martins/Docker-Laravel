@@ -5,6 +5,7 @@
 
 git clone </br>
 composer install  </br>
+ln -s public html </br>
 docker-compose up -d 
 
 ## Caso de erro de acesso no Storage
